@@ -31,6 +31,8 @@ docker build -t todo-app .
 docker run -d \
   --name todo-app \
   --restart unless-stopped \
+  --log-opt max-size=10m \
+  --log-opt max-file=3 \
   -p 8888:8888 \
   -v todo-data:/data \
   todo-app
@@ -48,6 +50,17 @@ docker rm todo-app
 ```
 
 Именованный volume `todo-data` при этом не удаляется, поэтому задачи сохранятся.
+
+Проверить состояние и посмотреть логи:
+
+```bash
+docker inspect --format='{{.State.Health.Status}}' todo-app
+docker logs --tail 100 -f todo-app
+```
+
+Для каждого запроса в access-логе указываются HTTP status и время обработки в
+миллисекундах. Изменения задач, медленные запросы и ошибки базы также попадают в
+логи контейнера. Размер логов ограничен тремя файлами по 10 МБ.
 
 ## Тесты
 

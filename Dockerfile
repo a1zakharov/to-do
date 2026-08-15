@@ -12,6 +12,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY --chown=app:app app.py ./
+COPY --chown=app:app gunicorn.conf.py ./
 COPY --chown=app:app templates ./templates
 COPY --chown=app:app static ./static
 
@@ -22,4 +23,7 @@ USER app
 VOLUME ["/data"]
 EXPOSE 8888
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8888", "--workers", "2", "--access-logfile", "-", "app:app"]
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD ["python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8888/health', timeout=2)"]
+
+CMD ["gunicorn", "app:app"]
