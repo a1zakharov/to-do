@@ -1,0 +1,186 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #202124;
+  background: #f4f5f7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 48px 16px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.todo-app {
+  width: min(100%, 640px);
+  margin: 0 auto;
+  padding: 32px;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgb(0 0 0 / 8%);
+}
+
+h1 {
+  margin: 0 0 28px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.task-form {
+  display: flex;
+  gap: 10px;
+}
+
+.task-form input {
+  min-width: 0;
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #c9cdd2;
+  border-radius: 8px;
+}
+
+.task-form input:focus {
+  border-color: #2563eb;
+  outline: 3px solid rgb(37 99 235 / 15%);
+}
+
+.task-form button {
+  width: 48px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: #2563eb;
+  font-size: 1.5rem;
+}
+
+.task-form button:hover {
+  background: #1d4ed8;
+}
+
+.task-list {
+  margin: 24px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 4px;
+  border-bottom: 1px solid #eceef0;
+}
+
+.task-item input[type="checkbox"] {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  accent-color: #2563eb;
+}
+
+.task-title {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.task-item.completed .task-title {
+  color: #777;
+  text-decoration: line-through;
+}
+
+.task-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.task-actions button,
+.filters button {
+  border: 0;
+  border-radius: 6px;
+  color: #4b5563;
+  background: transparent;
+}
+
+.task-actions button {
+  padding: 6px 8px;
+}
+
+.task-actions button:hover,
+.filters button:hover {
+  background: #f0f2f5;
+}
+
+.delete-button:hover {
+  color: #b91c1c;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.filters button {
+  padding: 8px 10px;
+}
+
+.filters button.active {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.empty-message {
+  margin: 28px 0;
+  color: #757575;
+  text-align: center;
+}
+
+.error-message {
+  margin: 14px 0 0;
+  color: #b91c1c;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 16px 10px;
+  }
+
+  .todo-app {
+    padding: 24px 16px;
+  }
+
+  .task-item {
+    gap: 9px;
+  }
+
+  .task-actions button {
+    padding: 7px 5px;
+  }
+}
