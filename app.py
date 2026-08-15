@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+import os
 from pathlib import Path
 import sqlite3
 
@@ -10,7 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent
 
 def create_app(test_config=None):
     app = Flask(__name__)
-    app.config.from_mapping(DATABASE=str(BASE_DIR / "todo.db"))
+    app.config.from_mapping(
+        DATABASE=os.environ.get("DATABASE", str(BASE_DIR / "todo.db"))
+    )
 
     if test_config:
         app.config.update(test_config)
