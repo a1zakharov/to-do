@@ -20,6 +20,6 @@ RUN mkdir -p /data && chown app:app /data
 USER app
 
 VOLUME ["/data"]
-EXPOSE 8000
+EXPOSE 8888
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "2", "--access-logfile", "-", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8888", "--workers", "2", "--access-logfile", "-", "app:app"]
