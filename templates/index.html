@@ -11,6 +11,12 @@
   <main class="todo-app">
     <h1>My To-Do</h1>
 
+    <nav class="filters" aria-label="Фильтр задач">
+      <button type="button" class="active" data-filter="all">Все</button>
+      <button type="button" data-filter="active">Активные</button>
+      <button type="button" data-filter="completed">Выполненные</button>
+    </nav>
+
     <form id="task-form" class="task-form">
       <label class="visually-hidden" for="task-title">Новая задача</label>
       <input id="task-title" name="title" type="text" maxlength="300"
@@ -21,12 +27,6 @@
     <p id="error-message" class="error-message" role="alert" hidden></p>
     <p id="empty-message" class="empty-message">Задач пока нет</p>
     <ul id="task-list" class="task-list" aria-live="polite"></ul>
-
-    <nav class="filters" aria-label="Фильтр задач">
-      <button type="button" class="active" data-filter="all">Все</button>
-      <button type="button" data-filter="active">Активные</button>
-      <button type="button" data-filter="completed">Выполненные</button>
-    </nav>
   </main>
 
   <script src="{{ url_for('static', filename='app.js') }}" defer></script>

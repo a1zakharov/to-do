@@ -131,8 +131,10 @@ h1 {
 
 .filters {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 6px;
+  margin: 0 0 20px;
 }
 
 .filters button {

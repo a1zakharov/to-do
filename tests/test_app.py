@@ -53,6 +53,12 @@ def test_index_and_health(client):
     assert health.json == {"status": "ok"}
 
 
+def test_filters_render_before_task_form(client):
+    page = client.get("/")
+
+    assert page.data.index(b'class="filters"') < page.data.index(b'id="task-form"')
+
+
 def test_update_task_title(client):
     task = create_task(client).json
 
